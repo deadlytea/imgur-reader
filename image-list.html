@@ -1,15 +1,15 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../post-service/post-service.html">
+<link rel="import" href="imgur-service.html">
 <link rel="import" href="image-card.html">
 
-<polymer-element name="post-list">
+<polymer-element name="image-list">
   <template>
     <style>
       :host {
         display: block;
         width: 100%;
       }
-      post-card {
+      image-card {
         margin-bottom: 30px;
       }
     </style>
@@ -19,10 +19,10 @@
     </imgur-service>
     <div layout vertical center>
       <template repeat="{{image in images}}">
-        <post-card>
-          <img src="{{image.data}}" width="500">
-          <p>{{image.text}}</p>
-        </post-card>
+        <image-card>
+          <img src="{{image.link}}">
+          <p>{{image.title}}</p>
+        </image-card>
       </template>
     </div>
 
