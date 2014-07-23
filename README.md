@@ -13,6 +13,8 @@ Open the terminal and cd into the repository root directory
 You will need bower to install the components missing
 (Requires NodeJS and npm)
 
+```npm install -g bower```
+
 In the root directory of the repo run:
 
 ```$ bower install```
