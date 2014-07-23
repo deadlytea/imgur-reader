@@ -9,6 +9,8 @@
   <link rel="import" href="../bower_components/core-scroll-header-panel/core-scroll-header-panel.html">
   <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
   <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+  <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+  <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
   <style shim-shadowdom>
 
@@ -35,7 +37,7 @@
 
     /* background for toolbar when condensed */
     core-scroll-header-panel::shadow #condensedHeaderBg {
-      background-color: #9F499B;
+      background-color: #151540;
     }
 
     core-toolbar {
@@ -47,12 +49,18 @@
     .title {
       -webkit-transform-origin: 0;
       transform-origin: 0;
-      font-size: 40px;
+      font-size: 30px;
     }
 
     .content {
       width: 80%;
       margin: 50px auto;
+    }
+
+    paper-toast {
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
 
   </style>
@@ -63,46 +71,21 @@
 
     <core-toolbar class="tall">
 
-      <core-icon-button icon="refresh"></core-icon-button>
       <div flex></div>
-      <core-icon-button icon="arrow-back"></core-icon-button>
-      <core-icon-button icon="arrow-forward"></core-icon-button>
-      <div class="bottom indent title">Aww So Cute!</div>
+      <paper-icon-button icon="refresh"></paper-icon-button>
+
+      <paper-icon-button icon="arrow-back"></paper-icon-button>
+      <paper-icon-button icon="arrow-forward"></paper-icon-button>
+      <div class="bottom title">Aww So Cute!</div>
     </core-toolbar>
 
     <!-- Image Cards Go Here -->
     <div class="content" layout vertical center>
 
-      <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit sed eros dignissim porta. Maecenas at enim in nisl egestas tempus sed sed tellus. Mauris porttitor magna et leo laoreet ultrices. In a lectus eu arcu placerat varius id vel magna. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla iaculis dapibus ligula non vulputate. In sed turpis quam. Aliquam placerat mauris in purus sollicitudin luctus. Morbi bibendum vestibulum nunc eget fringilla. Maecenas id imperdiet turpis. Phasellus vehicula ligula et leo ultrices accumsan. Cras at nisl in risus dictum dignissim. Morbi ut mollis quam.
-</p>
-<p>
-Duis sodales dictum ipsum id hendrerit. Pellentesque libero leo, pellentesque ut tempus rutrum, elementum sed ligula. Praesent et pellentesque augue, a sollicitudin ligula. Curabitur ultrices viverra mauris, ut vulputate urna semper in. Cras dapibus, lacus quis porta scelerisque, enim orci tincidunt purus, eu varius lacus erat sed turpis. Nullam non risus sagittis, semper leo in, semper neque. Praesent tempus dui facilisis porta laoreet. Curabitur a mollis libero. Praesent rhoncus, sapien sit amet tempus posuere, augue felis feugiat est, non mollis tortor magna ut purus. Proin a velit nec lectus pulvinar facilisis ut eget mauris. Proin nec erat eget mi volutpat ullamcorper. Curabitur elementum fermentum urna, eget fringilla elit scelerisque in. Praesent scelerisque, arcu sed tempus consequat, neque ipsum molestie lectus, sed venenatis ipsum nunc quis nibh. Donec vel dui auctor lorem ultricies hendrerit. Praesent rhoncus ac ipsum nec bibendum.
-</p>
-<p>
-Duis pharetra risus justo, blandit luctus nunc rutrum a. Nullam suscipit non orci et tincidunt. Integer blandit ullamcorper tempor. Cras non imperdiet purus, aliquet molestie nulla. Vivamus vel erat nec nulla bibendum rhoncus. Phasellus quis pharetra tellus. Duis gravida lectus sapien, eu dignissim nibh eleifend at. Curabitur vehicula rhoncus velit, vel mattis metus tincidunt vulputate. Proin ultricies ipsum eget lorem scelerisque, ut euismod elit tincidunt. Cras auctor neque id gravida volutpat. Aliquam vel augue nisi. Integer sagittis purus eget ligula vestibulum elementum et et orci. Etiam mauris arcu, imperdiet ac massa vel, imperdiet hendrerit mauris.
-</p>
-<p>
-Proin aliquam consectetur lectus non ultrices. Nulla at lacus at diam ornare egestas. Cras iaculis adipiscing ipsum a mollis. Etiam non consectetur sem. Pellentesque sit amet odio eget dolor mollis posuere. Morbi eu arcu lacus. Aenean vestibulum viverra sapien, in malesuada erat tempor mattis. Donec iaculis accumsan semper. Fusce mollis metus eget mauris viverra, eu bibendum lacus adipiscing. Sed fermentum, orci eget eleifend molestie, mi erat auctor mauris, ac commodo lectus nunc sit amet ligula.
-</p>
-<p>
-Integer sodales augue quis gravida porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate tempor ornare. Vestibulum placerat cursus lorem, nec suscipit libero consequat id. Quisque porttitor arcu et diam suscipit, eu facilisis sapien gravida. Pellentesque at ipsum leo. Morbi hendrerit mattis ornare.
-</p>
-<p>
-Quisque sodales malesuada magna, eget varius sem consectetur et. Aliquam ultricies vehicula venenatis. Maecenas non convallis leo, a euismod tellus. Nunc vel purus eget leo malesuada auctor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi scelerisque lacus a justo blandit, non commodo dolor molestie. Aliquam ullamcorper risus lectus, a interdum nunc luctus ut. Pellentesque ultricies orci sit amet pretium porttitor. Pellentesque sagittis purus nunc, ac convallis sapien pretium vel. Proin imperdiet sollicitudin enim ac luctus. Pellentesque accumsan libero vel erat commodo bibendum. Duis ac nisi sit amet felis viverra tristique sed et ligula. Fusce ac interdum leo, a fringilla velit. Morbi eu est ac velit interdum tincidunt quis ut nulla.
-</p>
-<p>
-Suspendisse magna magna, ullamcorper a diam at, feugiat fringilla libero. Quisque vitae commodo mi, eget lobortis nunc. Integer ut orci ac turpis tincidunt vestibulum. Aliquam a massa id ipsum consequat fermentum sed sed nibh. Sed non neque venenatis, commodo diam a, commodo lacus. Ut eu risus quis diam aliquam tincidunt. Fusce imperdiet, diam eu tincidunt pretium, urna sem ullamcorper nunc, sed euismod sem orci ac massa. Etiam volutpat accumsan libero dignissim condimentum. Duis eu nibh varius, convallis sapien ut, pellentesque diam. Duis id nulla non urna pharetra rhoncus. Integer eget nisi tortor. Aliquam vel feugiat arcu, et porta leo. Vivamus gravida ante eget lorem mollis, at pulvinar lacus pretium.
-</p>
-<p>
-Aliquam posuere enim diam, commodo fringilla leo ultrices in. Fusce blandit sagittis lacinia. Suspendisse leo augue, adipiscing vel massa sit amet, posuere accumsan enim. In commodo porta mauris, vitae accumsan neque. Mauris varius neque at nibh dapibus vestibulum. Aenean sed odio ipsum. Aliquam nec est at libero ultricies varius vel a ipsum.
-</p>
-<p>
-Etiam tempor est ut orci faucibus tincidunt sed in tellus. Pellentesque elementum, enim non volutpat venenatis, nunc nunc auctor lectus, non tempus nibh leo vel massa. Proin nisi nisi, gravida vel porta id, ultrices in ligula. Nullam ac cursus mi. Sed eu accumsan eros. Aenean velit felis, fermentum a urna id, elementum luctus enim. Aenean ornare placerat consectetur.
-</p>
-<p>
-Donec et nisl non nibh ultricies commodo. Duis mollis vel sapien vel lobortis. Ut in commodo arcu. Aliquam laoreet facilisis purus eget sodales. Cras id justo quis dui tincidunt tempor. Suspendisse molestie bibendum tellus vehicula imperdiet. Integer ultricies leo at massa vestibulum ultricies.
-</p>
+      <image-card>
+        <img src="../images/dark_kitty_bg_1920x1080.jpg" width="500">
+        <p>A cute kitty</p>
+      </image-card>
 
     </div>
 

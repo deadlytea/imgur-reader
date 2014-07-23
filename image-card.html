@@ -1,0 +1,44 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-shadow/paper-shadow.html">
+
+<polymer-element name="image-card">
+
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin: 5px;
+    }
+    .card-footer {
+      margin-bottom: 10px;
+    }
+
+    polyfill-next-selector { content: '.card-header img'; }
+    .card-footer ::content img {
+      width: 500px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+    </style>
+    <div class="card paper-shadow-top paper-shadow-top-z-1">
+      
+      <content select="img"></content>
+      <div class="card-footer" layout horizontal center>
+        <content></content>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({});
+  </script>
+
+</polymer-element>
