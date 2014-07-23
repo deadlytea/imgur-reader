@@ -1,8 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
 
-<polymer-element name="image-card">
+<polymer-element name="image-card" attributes="zHover" on-mouseover="{{onMouseOver}}" on-mouseout="{{onMouseOut}}">
 
   <template>
     <style>
@@ -10,35 +11,71 @@
       display: block;
       position: relative;
       background-color: white;
-      padding: 20px;
-      width: 100%;
+      width: 90%;
       font-size: 1.2rem;
       font-weight: 300;
-      margin: 5px;
-    }
-    .card-footer {
-      margin-bottom: 10px;
-    }
-
-    polyfill-next-selector { content: '.card-header img'; }
-    .card-footer ::content img {
-      width: 500px;
-      border-radius: 50%;
       margin: 10px;
     }
+    .card-footer {
+      padding: 25px;
+    }
+
+    polymer-next-selector { content: ':host img'; }
+    ::content img {
+      object-fit: cover;
+      /*object-position: 50% 100%;*/
+      width: 100%;
+      /* height: 250px; */
+      border-radius: inherit;
+    }
+
+    paper-ripple {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 250px;
+      color: white;
+    }
+
     </style>
     <div class="card paper-shadow-top paper-shadow-top-z-1">
-      
-      <content select="img"></content>
+
+      <content id="c" select="img"></content>
       <div class="card-footer" layout horizontal center>
         <content></content>
       </div>
+      <template if="{{hasImage}}">
+        <paper-ripple class="recenteringTouch"></paper-ripple>
+      </template>
+      <paper-shadow target="{{}}" z="{{zReal}}" animated></paper-shadow>
     </div>
 
   </template>
 
   <script>
-    Polymer({});
+    Polymer('image-card', {
+      zHover: null,
+      hasImage: false,
+      publish: {
+        z: {value: 1, reflect: true},
+      },
+      ready: function() {
+        this.zReal = this.z;
+        this.hasImage = this.$.c.getDistributedNodes().length;
+      },
+      onMouseOver: function(e, detail, sender) {
+        if (this.zHover != null) {
+          this.zReal = this.zHover;
+        }
+      },
+      onMouseOut: function(e, detail, sender) {
+        if (this.zHover != null) {
+          this.zReal = this.z;
+        }
+      }
+    });
   </script>
 
 </polymer-element>
