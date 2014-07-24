@@ -11,8 +11,7 @@
     }
     </style>
     <core-ajax id="ajax"
-      auto
-      url="https://api.imgur.com/3/gallery/r/aww/time/1"
+      url="https://api.imgur.com/3/gallery/r/aww/time/{{imgurPage}}"
       headers='{"Authorization": "Client-ID 1e9f5e7d4c7ac77"}'
       on-core-response="{{imagesLoaded}}"
       handleAs="json">
@@ -23,10 +22,19 @@
     created: function() {
       this.images = [];
       this.page = 1;
+      this.imgurPage = 1;
+      this.from = 0;
+      this.to = 5;
+    },
+    ready: function() {
+      this.$.ajax.go();
+    },
+    pageChanged: function() {
+      this.$.ajax.go();
     },
     imagesLoaded: function() {
       // Make a copy of the loaded data
-      this.images = this.$.ajax.response.data.slice(0);
+      this.images = this.$.ajax.response.data.slice(this.from, this.to);
     }
   });
   </script>

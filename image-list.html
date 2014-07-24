@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="imgur-service.html">
 <link rel="import" href="image-card.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
 <polymer-element name="image-list">
   <template>
@@ -17,6 +18,8 @@
     <!-- add markup here -->
     <imgur-service id="service" images="{{images}}">
     </imgur-service>
+    <paper-icon-button on-click="{{lastPage}}" icon="arrow-back"></paper-icon-button>
+    <paper-icon-button on-click="{{nextPage}}" icon="arrow-forward"></paper-icon-button>
     <div layout vertical center>
       <template repeat="{{image in images}}">
         <image-card>
@@ -29,6 +32,33 @@
   </template>
 
   <script>
-    Polymer({});
+    Polymer('image-list', {
+      nextPage: function() {
+        if (this.$.service.from === 50) {
+          this.$.service.from = 0;
+          this.$.service.to = 5;
+          this.$.service.page = this.$.service.page + 1;
+          this.$.service.imgurPage = this.$.service.imgurPage + 1;
+        } else {
+          this.$.service.from = this.$.service.from + 5;
+          this.$.service.to = this.$.service.to + 5;
+          this.$.service.page = this.$.service.page + 1;
+        }
+      },
+      lastPage: function() {
+        if (this.$.service.from === 0) {
+          if (this.$.service.page > 1) {
+            this.$.service.from = 50;
+            this.$.service.to = 55;
+            this.$.service.page = this.$.service.page - 1;
+            this.$.service.imgurPage = this.$.service.imgurPage - 1;
+          }
+        } else {
+          this.$.service.from = this.$.service.from - 5;
+          this.$.service.to = this.$.service.to - 5;
+          this.$.service.page = this.$.service.page - 1;
+        }
+      }
+    });
   </script>
 </polymer-element>
