@@ -11,7 +11,6 @@
   <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
   <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
   <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-  <link rel="import" href="image-card.html">
   <link rel="import" href="image-list.html">
 
   <style shim-shadowdom>
@@ -74,8 +73,8 @@
     <core-toolbar class="tall">
 
       <div flex></div>
-      <paper-icon-button on-click="{{last}}" icon="arrow-back"></paper-icon-button>
-      <paper-icon-button on-click="{{next}}" icon="arrow-forward"></paper-icon-button>
+      <paper-icon-button onclick="last()" icon="arrow-back"></paper-icon-button>
+      <paper-icon-button onclick="next()" icon="arrow-forward"></paper-icon-button>
       <div class="bottom title">Cute</div>
     </core-toolbar>
 
@@ -99,12 +98,14 @@
           'scale(' + scale + ') translateZ(0)';
     });
 
-    var next = function() {
-      document.getElementByID('list').nextPage();
+    function next() {
+      var list = document.querySelector('image-list');
+      list.nextPage();
     }
 
-    var last = function() {
-      document.getElementByID('list').lastPage();
+    function last() {
+      var list = document.querySelector('image-list');
+      list.lastPage();
     }
 
     // Google Analytics tracking code
