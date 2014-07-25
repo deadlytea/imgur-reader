@@ -2,6 +2,8 @@
 <link rel="import" href="imgur-service.html">
 <link rel="import" href="image-card.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/core-media-query/core-media-query.html">
 
 <polymer-element name="image-list">
   <template>
@@ -18,15 +20,18 @@
     <!-- add markup here -->
     <imgur-service id="service" images="{{images}}">
     </imgur-service>
-    <div layout vertical center>
+    <core-media-query query="max-width: 600px" queryMatches="{{medOrSmallScreen}}"></core-media-query>
+    <div layout horizontal start wrap>
       <template repeat="{{image in images}}">
-        <image-card>
+        <image-card style="{{medOrSmallScreen ? \""width=90%;\"" : \""width=300px;\"" }}">
           <img src="{{image.link}}">
           <p>{{image.title}}</p>
+          <a href="{{image.link}}"><i>Imgur</i></a>
+          <a href="http://reddit.com{{image.reddit_comments}}"><i>Reddit</i></a>
         </image-card>
       </template>
     </div>
-
+    <paper-toast id="toast" text=""></paper-toast>
   </template>
 
   <script>
@@ -42,6 +47,8 @@
           this.$.service.to = this.$.service.to + 5;
           this.$.service.page = this.$.service.page + 1;
         }
+        this.$.toast.text = "You are now on page: " + this.$.service.page;
+        this.$.toast.show();
       },
       lastPage: function() {
         if (this.$.service.from === 0) {
@@ -50,13 +57,21 @@
             this.$.service.to = 55;
             this.$.service.page = this.$.service.page - 1;
             this.$.service.imgurPage = this.$.service.imgurPage - 1;
+            this.$.toast.text = "You are now on page: " + this.$.service.page;
+            this.$.toast.show();
+          } else {
+            this.$.toast.text = "Can't go back on page 1!";
+            this.$.toast.show();
           }
         } else {
           this.$.service.from = this.$.service.from - 5;
           this.$.service.to = this.$.service.to - 5;
           this.$.service.page = this.$.service.page - 1;
+          this.$.toast.text = "You are now on page: " + this.$.service.page;
+          this.$.toast.show();
         }
       }
+
     });
   </script>
 </polymer-element>

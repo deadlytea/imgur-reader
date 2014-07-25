@@ -11,14 +11,21 @@
       display: block;
       position: relative;
       background-color: white;
-      width: 90%;
+      width: 300px;
       font-size: 1.2rem;
       font-weight: 300;
       margin: 10px;
     }
     .card-footer {
-      padding: 25px;
+      padding: 10px;
     }
+    .card-text-main {
+      .padding: 25px;
+    }
+    .card-text-details {
+      font-size: 0.8rem;
+    }
+
 
     polymer-next-selector { content: ':host img'; }
     ::content img {
@@ -43,8 +50,15 @@
     <div class="card paper-shadow-top paper-shadow-top-z-1">
 
       <content id="c" select="img"></content>
-      <div class="card-footer" layout horizontal center>
-        <content></content>
+      <div class="card-footer" layout vertical>
+        <div class="card-text-main">
+          <content select="p"></content>
+        </div>
+        <br />
+        <div class="card-text-details" layout horizontal>
+          <div flex></div>
+          <div><content></content></div>
+        </div>
       </div>
       <template if="{{hasImage}}">
         <paper-ripple class="recenteringTouch"></paper-ripple>
